@@ -1,0 +1,29 @@
+name: Build Bootable ISO
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nasm gcc-multilib mtools xorriso grub-pc-bin grub-common
+
+    - name: Build Kernel and ISO
+      run: make
+
+    - name: Upload ISO Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MyCoolOS
+        path: bootable.iso
