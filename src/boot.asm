@@ -1,6 +1,5 @@
 MBALIGN     equ  1<<0
 MEMINFO     equ  1<<1
-VIDINFO     equ  1<<2
 FLAGS       equ  MBALIGN | MEMINFO | VIDINFO
 MAGIC       equ  0x1BADB002
 CHECKSUM    equ -(MAGIC + FLAGS)
