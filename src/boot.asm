@@ -6,9 +6,9 @@ CHECKSUM    equ -(MAGIC + FLAGS)
 
 section .multiboot
 align 4
-    dd MAGIC
+    dd 0x1BADB002
     dd FLAGS
-    dd CHECKSUM
+    dd -(0x1BADB002 + FLAGS)
     ; aout kludge (unused for ELF, pad with zeros)
     dd 0, 0, 0, 0, 0
     ; Video mode request (0 = linear graphics)
